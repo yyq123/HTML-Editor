@@ -4,7 +4,7 @@ HTML-Editor is a set of HTML/XHTML mappings (macros) and menus for Vim 6 or late
 First you should put `filetype plugin on` in your vimrc. 
 
 ## Automatic installation: ##
-Using [Vundle][vundle], add the following to your `vimrc` then run
+Using [Vundle](https://github.com/gmarik/vundle), add the following to your `vimrc` then run
   `:PluginInstall`
 
         Plugin 'yyq123/HTML-Editor'
