@@ -2147,6 +2147,8 @@ call HTMLmap("inoremap", "<elead>y'", "&yacute;")
 call HTMLmap("inoremap", '<elead>y"', "&yuml;")
 call HTMLmap("inoremap", "<elead>2<", "&laquo;")
 call HTMLmap("inoremap", "<elead>2>", "&raquo;")
+call HTMLmap("inoremap", "<elead>ld", "&ldquo;")
+call HTMLmap("inoremap", "<elead>rd", "&rdquo;")
 call HTMLmap("inoremap", '<elead>"', "&uml;")
 call HTMLmap("inoremap", "<elead>o/", "&oslash;")
 call HTMLmap("inoremap", "<elead>sz", "&szlig;")
@@ -2789,6 +2791,8 @@ HTMLemenu HTML.Character\ Entities.Trademark            tm       TM
  menu HTML.Character\ Entities.-sep3- <nul>
 HTMLemenu HTML.Character\ Entities.Left\ Angle\ Quote   2<       «
 HTMLemenu HTML.Character\ Entities.Right\ Angle\ Quote  2>       »
+HTMLemenu HTML.Character\ Entities.Left\ Double\ Quote  ld
+HTMLemenu HTML.Character\ Entities.Right\ Double\ Quote rd
 HTMLemenu HTML.Character\ Entities.Inverted\ Exlamation !        ¡
 HTMLemenu HTML.Character\ Entities.Inverted\ Question   ?        ¿
 HTMLemenu HTML.Character\ Entities.Paragraph            pa       ¶

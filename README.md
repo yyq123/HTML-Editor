@@ -35,3 +35,6 @@ This file is used by browser_launcher.vim and is optional—it will fall back to
 ### Auto-Update Image Tag Size Attributes: ###
 - MangleImageTag.vim
 If this file is placed in one of the toplevel directories in your `runtimepath` it will cause the ";mi" mapping to be defined. (See the warning under `:help ;mi`.)
+
+### References: ###
+- [Character Entity Reference HTML](https://dev.w3.org/html5/html-author/charref)
