@@ -1813,14 +1813,14 @@ call HTMLmap("vnoremap", "<lead>ol", "<ESC>`>a<CR></[{OL}]><C-O>`<<[{OL}]><CR><E
 call HTMLmapo('<lead>ol', 0)
 
 "       P       Paragraph               HTML 3.0
-call HTMLmap("inoremap", "<lead>pp", "<[{P}]><CR></[{P}]><ESC>O")
+call HTMLmap("inoremap", "<lead>pp", "<[{P}]></[{P}]><C-O>F<")
 " Visual mapping:
-call HTMLmap("vnoremap", "<lead>pp", "<ESC>`>a<CR></[{P}]><C-O>`<<[{P}]><CR><ESC>", 1)
+call HTMLmap("vnoremap", "<lead>pp", "<ESC>`>a</[{P}]><C-O>`<<[{P}]><ESC>", 2)
 " Motion mapping:
 call HTMLmapo('<lead>pp', 0)
 " A special mapping... If you're between <P> and </P> this will insert the
 " close tag and then the open tag in insert mode:
-call HTMLmap("inoremap", "<lead>/p", "</[{P}]><CR><CR><[{P}]><CR>")
+call HTMLmap("inoremap", "<lead>/p", "</[{P}]><[{P}]><CR>")
 
 "       PRE     Preformatted Text       HTML 2.0
 call HTMLmap("inoremap", "<lead>pr", "<[{PRE}]><CR></[{PRE}]><ESC>O")
