@@ -1,0 +1,10 @@
+2019-12-12
+==========
+Line: 1816
+call HTMLmap("inoremap", "<lead>pp", "<[{P}]></[{P}]><C-O>F<")
+
+Line: 1501
+call HTMLmap("inoremap", "<lead>ah", "<[{A HREF=\"\" TITLE=\"\"></A}]><C-O>3F\"")
+
+Line: 1937
+call HTMLmap("inoremap", "<lead>eb", "<[{EMBED TYPE=\"\" SRC=\"\" WIDTH=\"\" HEIGHT}]=\"\" /><ESC>7F\"")

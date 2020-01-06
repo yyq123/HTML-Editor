@@ -1,0 +1,139 @@
+            HTML/XHTML Editing Macros: Frequently Asked Questions
+
+
+Index:
+
+ 1. How do I disable the tab mapping?
+ 2. How do I prevent the plugin from overriding mappings I have defined?
+ 3. How do I disable any mapping?
+ 4. How do I make the mappings insert lowercase tags instead of uppercase?
+ 5. How do I make the mappings insert XHTML tags?
+ 6. How do I change the map leader from ; or the character entities map leader
+    from & to something else?
+ 7. How do I keep the mappings from interfering when I edit CSS, JavaScript,
+    PHP, etc?
+ 8. I installed the vimball archive under windows and the toolbar icons do not
+    display properly.
+ 9. Is there an HTML/XHTML strict mode for the mappings?
+
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1. How do I disable the tab mapping?
+
+You can disable the default tab mapping by putting ":let g:no_html_tab_mapping
+= 'yes'" in your vimrc.
+
+This will change the default tab mapping to <lead>tab (;tab) instead.
+
+More information:
+
+  • :help g:no_html_tab_mapping
+  • :help html-tab
+  • :help g:html_map_leader
+
+
+2. How do I prevent the plugin from overriding mappings I have defined?
+
+You can prevent the plugin from overriding a mapping you have defined
+elsewhere—such as in your ~/.vimrc—by putting ":let g:no_html_map_override =
+'yes'" in your vimrc.
+
+More information:
+
+  • :help g:no_html_map_override
+
+
+3. How do I disable any mapping?
+
+You can disable any mapping that the plugin defines by putting a pattern that
+will match it in "g:no_html_maps", which is a regular expression. For example,
+to disable the ;ah and ;im mappings for all modes, put ":let g:no_html_maps =
+'^\(;ah\|;im\)$'" in your vimrc.
+
+Mappings that match this pattern will be suppressed regardless of the mode the
+mapping is for, and the pattern will not undergo g:html_map_leader and
+g:html_map_entity_leader substitution.
+
+More information:
+
+  • :help g:no_html_maps
+
+
+4. How do I make the mappings insert lowercase tags instead of uppercase?
+
+You can make the output of the mappings lowercase by putting ":let
+g:html_tag_case = 'lowercase'" in your vimrc.
+
+More information:
+
+  • :help g:html_tag_case
+  • :help g:html_tag_case_autodetect
+
+
+5. How do I make the mappings insert XHTML tags?
+
+You can make the mappings output transitional XHTML by putting ":let
+g:do_xhtml_mappings = 'yes'" in your vimrc.
+
+More information:
+
+  • :help g:do_xhtml_mappings
+
+
+6. How do I change the map leader from ; or the character entities map leader
+from & to something else?
+
+You can change the default leader from ";" to something else—"_" for
+example—by putting ":let g:html_map_leader = '_'" in your vimrc.
+
+You may also change the leader for the &-mappings by putting something like
+":let g:html_map_entities_leader = '\'" in your vimrc.
+
+More information:
+
+  • :help g:html_map_leader
+  • :help g:html_map_entities_leader
+  • :help html-tags
+  • :help character-entities
+
+
+7. How do I keep the mappings from interfering when I edit CSS, JavaScript,
+PHP, etc?
+
+You can temporarily turn off all the mappings for the current buffer by typing
+":HTMLmappings disable" within Vim. You can re-enable them with ":HTMLmappings
+enable".
+
+You can shorten the command to just ":HTML" and the arguments "off" and "on"
+are valid.
+
+More information:
+
+  • :help :HTMLmappings
+
+
+8. I installed the vimball archive under windows and the toolbar icons do not
+display properly.
+
+If you are on a Windows based system, the provided toolbar icons in BMP form
+will not be usable from the VBA files. This is due to a bug in Vimball that
+will hopefully be fixed in the future. In the meantime, either use the ZIP
+archive or manually extract the pixmaps ZIP file in your bitmaps directory
+after installing the Vimball.
+
+[The BMP files are no longer included in the Vimball by default.]
+
+
+9. Is there an HTML/XHTML strict mode for the mappings?
+
+No, because it is assumed that when an author wants strict (X)HTML he will not
+use the mappings that output transitional tags.
+
+The only concession to strict mode is the ";s4" mapping.
+
+More information:
+
+  • :help n_;s4
+  • :help n_;4
+

@@ -2,8 +2,8 @@
 "
 " Author:      Christian J. Robinson <heptite@gmail.com>
 " URL:         http://christianrobinson.name/vim/HTML/
-" Last Change: October 13, 2011
-" Version:     0.40.0
+" Last Change: November 26, 2012
+" Version:     0.40.1
 " Original Concept: Doug Renze
 "
 "
@@ -52,7 +52,7 @@
 " - Add :HTMLmappingsreload/html/xhtml to the HTML menu?
 "
 " ---- RCS Information: ------------------------------------------------- {{{1
-" $Id: HTML.vim,v 1.231 2011/10/13 19:41:14 infynity Exp $
+" $Id: HTML.vim,v 1.232 2012/11/26 07:09:20 infynity Exp $
 " ----------------------------------------------------------------------- }}}1
 
 " ---- Initialization: -------------------------------------------------- {{{1
@@ -1498,7 +1498,7 @@ call HTMLmap("vnoremap", "<lead>cm", "<C-C>:execute \"normal \" . <SID>tag('comm
 call HTMLmapo('<lead>cm', 0)
 
 "       A HREF  Anchor Hyperlink        HTML 2.0
-call HTMLmap("inoremap", "<lead>ah", "<[{A HREF=\"\"></A}]><C-O>F\"")
+call HTMLmap("inoremap", "<lead>ah", "<[{A HREF=\"\" TITLE=\"\"></A}]><C-O>3F\"")
 call HTMLmap("inoremap", "<lead>aH", "<[{A HREF=\"<C-R>*\"></A}]><C-O>F<")
 " Visual mappings:
 call HTMLmap("vnoremap", "<lead>ah", "<ESC>`>a</[{A}]><C-O>`<<[{A HREF}]=\"\"><C-O>F\"", 0)
@@ -1815,12 +1815,12 @@ call HTMLmapo('<lead>ol', 0)
 "       P       Paragraph               HTML 3.0
 call HTMLmap("inoremap", "<lead>pp", "<[{P}]></[{P}]><C-O>F<")
 " Visual mapping:
-call HTMLmap("vnoremap", "<lead>pp", "<ESC>`>a</[{P}]><C-O>`<<[{P}]><ESC>", 2)
+call HTMLmap("vnoremap", "<lead>pp", "<ESC>`>a<CR></[{P}]><C-O>`<<[{P}]><CR><ESC>", 1)
 " Motion mapping:
 call HTMLmapo('<lead>pp', 0)
 " A special mapping... If you're between <P> and </P> this will insert the
 " close tag and then the open tag in insert mode:
-call HTMLmap("inoremap", "<lead>/p", "</[{P}]><[{P}]><CR>")
+call HTMLmap("inoremap", "<lead>/p", "</[{P}]><CR><CR><[{P}]><CR>")
 
 "       PRE     Preformatted Text       HTML 2.0
 call HTMLmap("inoremap", "<lead>pr", "<[{PRE}]><CR></[{PRE}]><ESC>O")
@@ -1934,7 +1934,7 @@ call HTMLmap("inoremap", "<lead>js", "<C-O>:call <SID>TC(0)<CR><[{SCRIPT TYPE}]=
 call HTMLmap("inoremap", "<lead>sj", "<[{SCRIPT SRC}]=\"\" [{TYPE}]=\"text/javascript\"></[{SCRIPT}]><C-O>3F\"")
 
 "       EMBED
-call HTMLmap("inoremap", "<lead>eb", "<[{EMBED SRC=\"\" WIDTH=\"\" HEIGHT}]=\"\" /><CR><[{NOEMBED></NOEMBED}]><ESC>k$5F\"i")
+call HTMLmap("inoremap", "<lead>eb", "<[{EMBED TYPE=\"\" SRC=\"\" WIDTH=\"\" HEIGHT}]=\"\" /><ESC>7F\"")
 
 "       NOSCRIPT
 call HTMLmap("inoremap", "<lead>ns", "<[{NOSCRIPT}]><CR></[{NOSCRIPT}]><C-O>O")
@@ -2147,8 +2147,6 @@ call HTMLmap("inoremap", "<elead>y'", "&yacute;")
 call HTMLmap("inoremap", '<elead>y"', "&yuml;")
 call HTMLmap("inoremap", "<elead>2<", "&laquo;")
 call HTMLmap("inoremap", "<elead>2>", "&raquo;")
-call HTMLmap("inoremap", "<elead>ld", "&ldquo;")
-call HTMLmap("inoremap", "<elead>rd", "&rdquo;")
 call HTMLmap("inoremap", '<elead>"', "&uml;")
 call HTMLmap("inoremap", "<elead>o/", "&oslash;")
 call HTMLmap("inoremap", "<elead>sz", "&szlig;")
@@ -2429,8 +2427,10 @@ endfunction
 
 if ! s:BoolVar('g:no_html_toolbar') && has("toolbar")
 
-  if ((has("win32") || has('win64')) && globpath(&rtp, 'bitmaps/Browser.bmp') == '')
-      \ || globpath(&rtp, 'bitmaps/Browser.xpm') == ''
+  "if ((has("win32") || has('win64')) && globpath(&rtp, 'bitmaps/Browser.bmp') == '')
+  "    \ || globpath(&rtp, 'bitmaps/Browser.xpm') == ''
+  if ((has("win32") || has('win64')) && findfile('bitmaps/Browser.bmp', &rtp) == '')
+      \ || findfile('bitmaps/Browser.xpm', &rtp) == ''
     let s:tmp = "Warning:\nYou need to install the Toolbar Bitmaps for the "
           \ . fnamemodify(s:thisfile, ':t') . " plugin. "
           \ . "See: http://christianrobinson.name/vim/HTML/#files\n"
@@ -2791,8 +2791,6 @@ HTMLemenu HTML.Character\ Entities.Trademark            tm       TM
  menu HTML.Character\ Entities.-sep3- <nul>
 HTMLemenu HTML.Character\ Entities.Left\ Angle\ Quote   2<       «
 HTMLemenu HTML.Character\ Entities.Right\ Angle\ Quote  2>       »
-HTMLemenu HTML.Character\ Entities.Left\ Double\ Quote  ld
-HTMLemenu HTML.Character\ Entities.Right\ Double\ Quote rd
 HTMLemenu HTML.Character\ Entities.Inverted\ Exlamation !        ¡
 HTMLemenu HTML.Character\ Entities.Inverted\ Question   ?        ¿
 HTMLemenu HTML.Character\ Entities.Paragraph            pa       ¶
