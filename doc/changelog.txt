@@ -1,10 +1,76 @@
 2019-12-12
 ==========
-Line: 1816
-call HTMLmap("inoremap", "<lead>pp", "<[{P}]></[{P}]><C-O>F<")
-
 Line: 1501
 call HTMLmap("inoremap", "<lead>ah", "<[{A HREF=\"\" TITLE=\"\"></A}]><C-O>3F\"")
 
+Line: 1816
+call HTMLmap("inoremap", "<lead>pp", "<[{P}]></[{P}]><C-O>F<")
+
 Line: 1937
 call HTMLmap("inoremap", "<lead>eb", "<[{EMBED TYPE=\"\" SRC=\"\" WIDTH=\"\" HEIGHT}]=\"\" /><ESC>7F\"")
+
+Line: 1960:
+call HTMLmap("inoremap", "<lead>tr", "<[{TR}]></[{TR}]><C-O>F<")
+
+Line: 1961:
+call HTMLmap("inoremap", "<lead>td", "<[{TD}]></[{TD}]><C-O>F<")
+
+2020-01-08
+==========
+Line: 2386
+call HTMLmap("nnoremap", "<lead>db", ":exe '!start explorer ' . <SID>ShellEscape(expand('%:p'))<CR>")
+
+
+2020-01-14
+==========
+Line: 2084 (Add)
+call HTMLmap("inoremap", "<elead>ld", "&ldquo;")
+
+Line: 2085 (Add)
+call HTMLmap("inoremap", "<elead>rd", "&rdquo;")
+
+Line: 2119 (Add)
+call HTMLmap("inoremap", '<elead>Y"', "&Yuml;")
+
+Line: 2122 (Add)
+call HTMLmap("inoremap", "<elead>Sc", "&Scaron;")
+
+Line: 2151 (Add)
+call HTMLmap("inoremap", '<elead>_"', "&uml;")
+
+Line: 2152 (Add)
+call HTMLmap("inoremap", "<elead>sc", "&scaron;")
+
+Line: 2178 (Add)
+call HTMLmap("inoremap", "<elead>bb", "&brvbar;")
+
+Line: 2194 (Add)
+call HTMLmap("inoremap", "<elead>fn", "&fnof;")
+
+Line: 2272
+call HTMLmap("inoremap", "<elead>cr", "&crarr;")
+
+Line: 2461 (Add)
+set guioptions+=M
+
+Line: 2788 (Add)
+HTMLemenu HTML.Character\ Entities.Left\ double\ quotation mark      ld       “
+
+Line: 2789 (Add)
+HTMLemenu HTML.Character\ Entities.Right\ double\ quotation mark     rd       ”
+
+Line: 2802 (Add)
+HTMLemenu HTML.Character\ Entities.Broken\ Bar          bb       ¦
+
+Line: 2876 (Add)
+HTMLemenu HTML.Character\ Entities.&Umlauts.Y-umlaut  Y"  Ÿ
+
+Line: 2878
+HTMLemenu HTML.Character\ Entities.&Umlauts.Umlaut    _"  ¨
+
+Line: 2230 (Add)
+call HTMLmap("inoremap", "<elead>Og", "&Omega;")
+
+Line: 2904 (Add)
+HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Omega    Og Ω
+

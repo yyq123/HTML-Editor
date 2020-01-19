@@ -749,6 +749,8 @@ Less than (<)		&lt;		&<		*i_&<*
 					*i_&<space>* *i_&space* *i_;<space>*
 Space (non-breaking)	&nbsp;		&<space>/;<space>	*i_;space*
 Quotation mark (")	&quot;		&'		*i_&'*
+Left double Quote	&ldquot;	&ld		*i_&ld*
+Right double Quote	&rdquot;	&rd		*i_&rd*
 Cent			&cent;		&c|		*i_&cbar*
 Pound			&pound;		&#		*i_&#*
 Euro			&euro;		&E=		*i_&E=*
@@ -761,6 +763,7 @@ Trademark		&trade;		&tm		*i_&tm*
 Multiply		&times;		&x		*i_&x*
 Divide			&divide;	&/		*i_&/*
 Plus/Minus		&plusmn;	&+-		*i_&+-*
+Function		&fnof;		&fn		*i_&fn*
 Inverted Exclamation	&iexcl;		&!		*i_&!*
 Inverted Question	&iquest;	&?		*i_&?*
 Degree			&deg;		&dg		*i_&dg*
@@ -790,15 +793,15 @@ Superscript 3		&sup3;		&3^		*i_&3^*
 En dash			&ndash;		&n-/&2-		*i_&n-* *i_&2-*
 Em dash			&mdash;		&m-/&--/&3-	*i_&m-* *i_&--* *i_3-*
 Ellipsis		&hellip;	&3.		*i_&3.*
-A-grave			&Agrave;	&A`		*i_&A`*
+A-grave			&Agrave;	&A`		*i_&A*
 a-grave			&agrave;	&a`		*i_&a`*
-E-grave			&Egrave;	&E`		*i_&E`*
+E-grave			&Egrave;	&E`		*i_&E*
 e-grave			&egrave;	&e`		*i_&e`*
-I-grave			&Igrave;	&I`		*i_&I`*
+I-grave			&Igrave;	&I`		*i_&I*
 i-grave			&igrave;	&i`		*i_&i`*
-O-grave			&Ograve;	&O`		*i_&O`*
+O-grave			&Ograve;	&O`		*i_&O*
 o-grave			&ograve;	&o`		*i_&o`*
-U-grave			&Ugrave;	&U`		*i_&U`*
+U-grave			&Ugrave;	&U`		*i_&U*
 u-grave			&ugrave;	&u`		*i_&u`*
 A-acute			&Aacute;	&A'		*i_&A'*
 a-acute			&aacute;	&a'		*i_&a'*
@@ -838,8 +841,11 @@ O-umlaut		&Ouml;		&O"		*i_&Oquote*
 o-umlaut		&ouml;		&o"		*i_&oquote*
 U-umlaut		&Uuml;		&U"		*i_&Uquote*
 u-umlaut		&uuml;		&u"		*i_&uquote*
+Y-umlaut		&Yuml;		&Y"		*i_&Yquote*
 y-umlaut		&yuml;		&y"		*i_&yquote*
-Umlaut			&uml;		&"		*i_&quote*
+S-caron			&Scaron;	&Sc		*i_&Scaron*
+s-caron			&scaron;	&sc		*i_&scaron*
+Umlaut			&uml;		&_"		*i_&quote*
 A-ring			&Aring;		&Ao		*i_&Ao*
 a-ring			&aring;		&ao		*i_&ao*
 AE-ligature		&AElig;		&AE		*i_&AE*
@@ -859,6 +865,7 @@ Right double arrow	&rArr;		&rA		*i_&rA*
 Up double arrow		&uArr;		&uA		*i_&uA*
 Down double arrow	&dArr;		&dA		*i_&dA*
 Left-right double arrow	&hArr;		&hA		*i_&hA*
+Carriage Return		&crarr;		&cr		*i_&cr*
 
 
 The greek alphabet:
@@ -888,6 +895,7 @@ Upper Upsilon		&Upsilon;	&Up		*i_&Up*
 Upper Phi		&Phi;		&Ph		*i_&Ph*
 Upper Chi		&Chi;		&Ch		*i_&Ch*
 Upper Psi		&Psi;		&Ps		*i_&Ps*
+Upper Omega		&Omega;		&Og		*i_&Og*
 Lower alpha		&alpha;		&al		*i_&al*
 Lower beta		&beta;		&be		*i_&be*
 Lower gamma		&gamma;		&ga		*i_&ga*

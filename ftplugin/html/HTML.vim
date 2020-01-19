@@ -1957,8 +1957,8 @@ call HTMLmap("inoremap", "<lead>ta", "<[{TABLE}]><CR></[{TABLE}]><ESC>O")
 call HTMLmap("inoremap", "<lead>tH", "<[{THEAD}]><CR></[{THEAD}]><ESC>O")
 call HTMLmap("inoremap", "<lead>tb", "<[{TBODY}]><CR></[{TBODY}]><ESC>O")
 call HTMLmap("inoremap", "<lead>tf", "<[{TFOOT}]><CR></[{TFOOT}]><ESC>O")
-call HTMLmap("inoremap", "<lead>tr", "<[{TR}]><CR></[{TR}]><ESC>O")
-call HTMLmap("inoremap", "<lead>td", "<[{TD}]><CR></[{TD}]><ESC>O")
+call HTMLmap("inoremap", "<lead>tr", "<[{TR}]></[{TR}]><C-O>F<")
+call HTMLmap("inoremap", "<lead>td", "<[{TD}]></[{TD}]><C-O>F<")
 call HTMLmap("inoremap", "<lead>th", "<[{TH></TH}]><C-O>F<")
 " Visual mappings:
 call HTMLmap("vnoremap", "<lead>ca", "<ESC>`>a<CR></[{CAPTION}]><C-O>`<<[{CAPTION}]><CR><ESC>", 1)
@@ -2081,6 +2081,8 @@ call HTMLmap("inoremap", "<elead>cO", "&copy;")
 call HTMLmap("inoremap", "<elead>rO", "&reg;")
 call HTMLmap("inoremap", "<elead>tm", "&trade;")
 call HTMLmap("inoremap", "<elead>'", "&quot;")
+call HTMLmap("inoremap", "<elead>ld", "&ldquo;")
+call HTMLmap("inoremap", "<elead>rd", "&rdquo;")
 call HTMLmap("inoremap", "<elead><", "&lt;")
 call HTMLmap("inoremap", "<elead>>", "&gt;")
 call HTMLmap("inoremap", "<elead><space>", "&nbsp;")
@@ -2116,6 +2118,8 @@ call HTMLmap("inoremap", "<elead>U`", "&Ugrave;")
 call HTMLmap("inoremap", "<elead>U'", "&Uacute;")
 call HTMLmap("inoremap", "<elead>U^", "&Ucirc;")
 call HTMLmap("inoremap", '<elead>U"', "&Uuml;")
+call HTMLmap("inoremap", '<elead>Y"', "&Yuml;")
+call HTMLmap("inoremap", "<elead>Sc", "&Scaron;")
 call HTMLmap("inoremap", "<elead>Y'", "&Yacute;")
 call HTMLmap("inoremap", "<elead>a`", "&agrave;")
 call HTMLmap("inoremap", "<elead>a'", "&aacute;")
@@ -2145,9 +2149,10 @@ call HTMLmap("inoremap", "<elead>u^", "&ucirc;")
 call HTMLmap("inoremap", '<elead>u"', "&uuml;")
 call HTMLmap("inoremap", "<elead>y'", "&yacute;")
 call HTMLmap("inoremap", '<elead>y"', "&yuml;")
+call HTMLmap("inoremap", "<elead>sc", "&scaron;")
 call HTMLmap("inoremap", "<elead>2<", "&laquo;")
 call HTMLmap("inoremap", "<elead>2>", "&raquo;")
-call HTMLmap("inoremap", '<elead>"', "&uml;")
+call HTMLmap("inoremap", '<elead>_"', "&uml;")
 call HTMLmap("inoremap", "<elead>o/", "&oslash;")
 call HTMLmap("inoremap", "<elead>sz", "&szlig;")
 call HTMLmap("inoremap", "<elead>!", "&iexcl;")
@@ -2174,6 +2179,7 @@ call HTMLmap("inoremap", "<elead>3^", "&sup3;")
 call HTMLmap("inoremap", "<elead>mi", "&micro;")
 call HTMLmap("inoremap", "<elead>pa", "&para;")
 call HTMLmap("inoremap", "<elead>se", "&sect;")
+call HTMLmap("inoremap", "<elead>bb", "&brvbar;")
 call HTMLmap("inoremap", "<elead>.", "&middot;")
 call HTMLmap("inoremap", "<elead>*", "&bull;")
 call HTMLmap("inoremap", "<elead>x", "&times;")
@@ -2185,6 +2191,7 @@ call HTMLmap("inoremap", "<elead>m-", "&mdash;")  " Sentence break
 call HTMLmap("inoremap", "<elead>3-", "&mdash;")  " ...
 call HTMLmap("inoremap", "<elead>--", "&mdash;")  " ...
 call HTMLmap("inoremap", "<elead>3.", "&hellip;")
+call HTMLmap("inoremap", "<elead>fn", "&fnof;")
 " Fractions:
 call HTMLmap("inoremap", "<elead>14", "&frac14;")
 call HTMLmap("inoremap", "<elead>12", "&frac12;")
@@ -2226,6 +2233,7 @@ call HTMLmap("inoremap", "<elead>Up", "&Upsilon;")
 call HTMLmap("inoremap", "<elead>Ph", "&Phi;")
 call HTMLmap("inoremap", "<elead>Ch", "&Chi;")
 call HTMLmap("inoremap", "<elead>Ps", "&Psi;")
+call HTMLmap("inoremap", "<elead>Og", "&Omega;")
 "   ... Lowercase/small:
 call HTMLmap("inoremap", "<elead>al", "&alpha;")
 call HTMLmap("inoremap", "<elead>be", "&beta;")
@@ -2261,7 +2269,7 @@ call HTMLmap("inoremap", "<elead>ua", "&uarr;")
 call HTMLmap("inoremap", "<elead>ra", "&rarr;")
 call HTMLmap("inoremap", "<elead>da", "&darr;")
 call HTMLmap("inoremap", "<elead>ha", "&harr;")
-"call HTMLmap("inoremap", "<elead>ca", "&crarr;")
+call HTMLmap("inoremap", "<elead>cr", "&crarr;")
 " double-line arrows:
 call HTMLmap("inoremap", "<elead>lA", "&lArr;")
 call HTMLmap("inoremap", "<elead>uA", "&uArr;")
@@ -2383,11 +2391,11 @@ elseif has("unix")
   endif
 elseif has("win32") || has('win64')
   " Run the default Windows browser:
-   call HTMLmap("nnoremap", "<lead>db", ":exe '!start RunDll32.exe shell32.dll,ShellExec_RunDLL ' . <SID>ShellEscape(expand('%:p'))<CR>")
+   call HTMLmap("nnoremap", "<lead>db", ":exe '!start explorer ' . <SID>ShellEscape(expand('%:p'))<CR>")
 
   " This assumes that IE is installed and the file explorer will become IE
   " when given an URL to open:
-  call HTMLmap("nnoremap", "<lead>ie", ":exe '!start explorer ' . <SID>ShellEscape(expand('%:p'))<CR>")
+  call HTMLmap("nnoremap", "<lead>ie", ":exe '!start iexplore ' . <SID>ShellEscape(expand('%:p'))<CR>")
 endif
 
 " ----------------------------------------------------------------------------
@@ -2457,6 +2465,7 @@ if ! s:BoolVar('g:no_html_toolbar') && has("toolbar")
   endif
 
   set guioptions+=T
+  set guioptions+=m
 
   "tunmenu ToolBar
   silent! unmenu ToolBar
@@ -2779,6 +2788,8 @@ HTMLemenu HTML.Character\ Entities.Greaterthan          >        >
 HTMLemenu HTML.Character\ Entities.Lessthan             <        <
 HTMLemenu HTML.Character\ Entities.Space                <space>  nonbreaking
 HTMLemenu HTML.Character\ Entities.Quotation\ mark      '        "
+HTMLemenu HTML.Character\ Entities.Left\ double\ quotation mark      ld       “
+HTMLemenu HTML.Character\ Entities.Right\ double\ quotation mark     rd       ”
  menu HTML.Character\ Entities.-sep1- <nul>
 HTMLemenu HTML.Character\ Entities.Cent                 c\|      ¢
 HTMLemenu HTML.Character\ Entities.Pound                #        £
@@ -2795,6 +2806,7 @@ HTMLemenu HTML.Character\ Entities.Inverted\ Exlamation !        ¡
 HTMLemenu HTML.Character\ Entities.Inverted\ Question   ?        ¿
 HTMLemenu HTML.Character\ Entities.Paragraph            pa       ¶
 HTMLemenu HTML.Character\ Entities.Section              se       §
+HTMLemenu HTML.Character\ Entities.Broken\ Bar          bb       ¦
 HTMLemenu HTML.Character\ Entities.Middle\ Dot          \.       ·
 HTMLemenu HTML.Character\ Entities.Bullet               *        •
 HTMLemenu HTML.Character\ Entities.En\ dash             n-       \-
@@ -2809,6 +2821,7 @@ HTMLemenu HTML.Character\ Entities.Math.Plus/Minus      +-  ±
 HTMLemenu HTML.Character\ Entities.Math.Superscript\ 1  1^  ¹
 HTMLemenu HTML.Character\ Entities.Math.Superscript\ 2  2^  ²
 HTMLemenu HTML.Character\ Entities.Math.Superscript\ 3  3^  ³
+HTMLemenu HTML.Character\ Entities.Math.Function        fn
 HTMLemenu HTML.Character\ Entities.Math.Fractions.One\ Quarter    14  ¼
 HTMLemenu HTML.Character\ Entities.Math.Fractions.One\ Half       12  ½
 HTMLemenu HTML.Character\ Entities.Math.Fractions.Three\ Quarters 34  ¾
@@ -2872,8 +2885,9 @@ HTMLemenu HTML.Character\ Entities.&Umlauts.O-umlaut  O"  Ö
 HTMLemenu HTML.Character\ Entities.&Umlauts.o-umlaut  o"  ö
 HTMLemenu HTML.Character\ Entities.&Umlauts.U-umlaut  U"  Ü
 HTMLemenu HTML.Character\ Entities.&Umlauts.u-umlaut  u"  ü
+HTMLemenu HTML.Character\ Entities.&Umlauts.Y-umlaut  Y"  Ÿ
 HTMLemenu HTML.Character\ Entities.&Umlauts.y-umlaut  y"  ÿ
-HTMLemenu HTML.Character\ Entities.&Umlauts.Umlaut    "   ¨
+HTMLemenu HTML.Character\ Entities.&Umlauts.Umlaut    _"  ¨
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Alpha    Al Α
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Beta     Be Β
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Gamma    Ga Γ
@@ -2897,6 +2911,7 @@ HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Upsilon  Up Υ
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Phi      Ph Φ
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Chi      Ch Χ
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Psi      Ps Ψ
+HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Omega    Og Ω
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.alpha    al α
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.beta     be β
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.gamma    ga γ
@@ -2925,6 +2940,7 @@ HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.omega    og ω
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.thetasym ts ϑ
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.upsih    uh ϒ
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Lowercase.piv      pv ϖ
+HTMLemenu HTML.Character\ Entities.Carriage Return                    cr
 HTMLemenu HTML.Character\ Entities.A&rrows.Left\ single\ arrow        la ←
 HTMLemenu HTML.Character\ Entities.A&rrows.Right\ single\ arrow       ra →
 HTMLemenu HTML.Character\ Entities.A&rrows.Up\ single\ arrow          ua ↑
