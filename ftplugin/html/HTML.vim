@@ -1518,11 +1518,11 @@ call HTMLmapo('<lead>at', 1)
 call HTMLmapo('<lead>aT', 1)
 
 "       A NAME  Named Anchor            HTML 2.0
-call HTMLmap("inoremap", "<lead>an", "<[{A NAME=\"\"></A}]><C-O>F\"")
-call HTMLmap("inoremap", "<lead>aN", "<[{A NAME=\"<C-R>*\"></A}]><C-O>F<")
+call HTMLmap("inoremap", "<lead>an", "<[{A ID=\"\"></A}]><C-O>F\"")
+call HTMLmap("inoremap", "<lead>aN", "<[{A ID=\"<C-R>*\"></A}]><C-O>F<")
 " Visual mappings:
-call HTMLmap("vnoremap", "<lead>an", "<ESC>`>a</[{A}]><C-O>`<<[{A NAME}]=\"\"><C-O>F\"", 0)
-call HTMLmap("vnoremap", "<lead>aN", "<ESC>`>a\"></[{A}]><C-O>`<<[{A NAME}]=\"<C-O>f<", 0)
+call HTMLmap("vnoremap", "<lead>an", "<ESC>`>a</[{A}]><C-O>`<<[{A ID}]=\"\"><C-O>F\"", 0)
+call HTMLmap("vnoremap", "<lead>aN", "<ESC>`>a\"></[{A}]><C-O>`<<[{A ID}]=\"<C-O>f<", 0)
 " Motion mappings:
 call HTMLmapo('<lead>an', 1)
 call HTMLmapo('<lead>aN', 1)

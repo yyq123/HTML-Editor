@@ -74,3 +74,20 @@ call HTMLmap("inoremap", "<elead>Og", "&Omega;")
 Line: 2904 (Add)
 HTMLemenu HTML.Character\ Entities.Greek\ &Letters.&Uppercase.Omega    Og Ω
 
+2020-02-01
+==========
+Line: 1520 (Before)
+"       A NAME  Named Anchor            HTML 2.0
+call HTMLmap("inoremap", "<lead>an", "<[{A NAME=\"\"></A}]><C-O>F\"")
+call HTMLmap("inoremap", "<lead>aN", "<[{A NAME=\"<C-R>*\"></A}]><C-O>F<")
+" Visual mappings:
+call HTMLmap("vnoremap", "<lead>an", "<ESC>`>a</[{A}]><C-O>`<<[{A NAME}]=\"\"><C-O>F\"", 0)
+call HTMLmap("vnoremap", "<lead>aN", "<ESC>`>a\"></[{A}]><C-O>`<<[{A NAME}]=\"<C-O>f<", 0)
+
+Line: 1520 (After)
+"       A NAME  Named Anchor            HTML 2.0
+call HTMLmap("inoremap", "<lead>an", "<[{A ID=\"\"></A}]><C-O>F\"")
+call HTMLmap("inoremap", "<lead>aN", "<[{A ID=\"<C-R>*\"></A}]><C-O>F<")
+" Visual mappings:
+call HTMLmap("vnoremap", "<lead>an", "<ESC>`>a</[{A}]><C-O>`<<[{A ID}]=\"\"><C-O>F\"", 0)
+call HTMLmap("vnoremap", "<lead>aN", "<ESC>`>a\"></[{A}]><C-O>`<<[{A ID}]=\"<C-O>f<", 0)
